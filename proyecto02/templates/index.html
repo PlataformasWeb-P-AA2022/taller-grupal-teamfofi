@@ -1,0 +1,44 @@
+{% extends 'master.html' %}
+
+{% block title %} Matriculas {% endblock %}
+{% block content %}
+    <div>
+
+        <h1 class="title">Administrar Matriculas </h1>
+        <hr>
+        <div>
+
+        <table>
+          <tr>
+              <th>ID</th>
+              <th>Nombre Propietario</th>
+              <th>Placa Vehiculo</th>
+              <th>Año de Matricula</th>
+              <th>Costo</th>
+              <th>Opciones</th
+          </tr>
+
+        {% for m in matriculas %}
+          <tr>
+                <td><b>{{ m.id }}</b></td>
+                <td>
+                    <p class="name">{{ m.nombrePropietario }} </p>
+                </td>
+                <td>{{ m.placa }}</td>
+                <td>{{ m.anio }}</td>
+                <td>{{ m.costo }}</td>
+                <td class="name">
+                  [<a href="{{ url_for('matricula', matricula_id=m.id)}}">
+                    Ver detalle
+                  </a>]
+                  [
+                  <a href="{{ url_for('editar', matricula_id=m.id) }}">Editar</a>
+                  ]
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+
+        </div>
+    </div>
+{% endblock %}
